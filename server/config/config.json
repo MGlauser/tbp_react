@@ -1,0 +1,20 @@
+{
+  "development": {
+    "mockAuth": {
+      "username": "mikeg@pdq.net"
+    },
+    "albumsRoot": "/Users/michael/Pictures/PortfolioSync"
+    },
+  
+  "test": {
+    "albumsRoot": "/Users/michael/Picturez"
+  },
+  
+  "staging": {
+    "albumsRoot": "/home/michael/Pictures"
+  },
+
+  "production": {
+    "albumsRoot": "/home/michael/Pictures"
+  }
+}
