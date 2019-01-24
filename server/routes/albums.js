@@ -166,7 +166,7 @@ exports = module.exports = {
 
   fetchImages: function (req, res) {
     let promise = new Promise(function (resolve, reject) {
-      let folder = config.albumsRoot + path.sep + (req.params.id || req.query.album);
+      let folder = config.albumsRoot + path.sep + (req.params.id || req.query.album).split('|').join(path.sep);
       dir.files(folder, 'file', function (err, tree) {
         if (err) {
           reject(err);
