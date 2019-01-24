@@ -11,9 +11,6 @@ var debug = require('debug')('tbp_react');
 var dir = require('node-dir');
 var _ = require('underscore');
 
-
-
-
 exports = module.exports = {
   init: function (cache, callback) {
     exports.cache = cache;
@@ -22,6 +19,7 @@ exports = module.exports = {
   },
 
   addRoutes: function () {
+    // Index
     router.get('/', function (req, res) {
       exports.index(req, res).then((content) => {
           res.setHeader('Content-Type', 'application/json');
@@ -35,7 +33,8 @@ exports = module.exports = {
         });
     });
 
-    router.get('/show', function (req, res) {
+    // Show
+    router.get('/:id', function (req, res) {
       exports.show(req, res).then((json) => {
           res.setHeader('Content-Type', 'application/json');
           res.status(200).send(json).end();
@@ -84,7 +83,7 @@ exports = module.exports = {
     }
 
     let key = exports.hashCode(config.albumsRoot + path.sep + JSON.stringify(req.query));
-    debug("albums#ishow cache key: ", key);
+    debug("albums#show cache key: ", key);
     let files = exports.cache.get(key);
     if (files === undefined) {
       return exports.fetchImages(req, res, user);
@@ -167,7 +166,8 @@ exports = module.exports = {
 
   fetchImages: function (req, res) {
     let promise = new Promise(function (resolve, reject) {
-      dir.files(config.albumsRoot + path.sep + req.query.album, 'file', function (err, tree) {
+      let folder = config.albumsRoot + path.sep + (req.params.id || req.query.album);
+      dir.files(folder, 'file', function (err, tree) {
         if (err) {
           reject(err);
         } else {

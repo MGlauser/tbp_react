@@ -69,7 +69,8 @@ class AlbumsPage extends Component {
       return;
     }
 
-    let uri = config[env].api + '/api/albums/show?album=' + folder;
+    // let uri = config[env].api + '/api/albums/show?album=' + folder;
+    let uri = config[env].api + '/api/albums/' + folder;
     // console.log("URI: ", uri);
     axios.get(uri).then((res) => {
       // console.log("here.");
