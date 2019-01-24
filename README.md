@@ -9,6 +9,9 @@ You'll need to specify the root of your Images directory tree.
 This is located in /server/config/config.json.
 Set the path at albumsRoot: "[your Images root folder.]"
 
+## Routing:
+https://reacttraining.com/react-router/web/guides/quick-start
+
 ## React UI Tree:
 
 https://www.npmjs.com/package/react-ui-tree

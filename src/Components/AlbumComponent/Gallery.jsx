@@ -12,12 +12,13 @@ class Gallery extends Component {
       currentImage: 0,
     };
 
+    this.openLightbox = this.openLightbox.bind(this);
     this.closeLightbox = this.closeLightbox.bind(this);
-    this.gotoNext = this.gotoNext.bind(this);
     this.gotoPrevious = this.gotoPrevious.bind(this);
+    this.gotoNext = this.gotoNext.bind(this);
     this.gotoImage = this.gotoImage.bind(this);
     this.handleClickImage = this.handleClickImage.bind(this);
-    this.openLightbox = this.openLightbox.bind(this);
+    this.renderGallery = this.renderGallery.bind(this);
   }
   openLightbox(index, event) {
     event.preventDefault();
